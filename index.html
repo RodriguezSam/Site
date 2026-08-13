@@ -141,6 +141,98 @@
             </div>
         </footer>
 
+        <!-- Chatbot Widget -->
+        <div class="chatbot-widget" id="chatbotWidget">
+            <div class="chatbot-header" id="chatbotHeader">
+                <h3>💬 FroZone Assistant</h3>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input-area">
+                <input type="text" id="userInput" placeholder="Ask me a question..." />
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatbotToggle">💬 Chat</button>
+
+        <!-- Load FAQ Database -->
+        <script src="faq-data.js"></script>
+
+        <script>
+            const chatbotWidget = document.getElementById('chatbotWidget');
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const closeBtn = document.getElementById('closeBtn');
+            const sendBtn = document.getElementById('sendBtn');
+            const userInput = document.getElementById('userInput');
+            const messagesContainer = document.getElementById('chatbotMessages');
+
+            // Toggle chatbot visibility
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWidget.style.display = chatbotWidget.style.display === 'none' ? 'flex' : 'none';
+                if (chatbotWidget.style.display === 'flex' && messagesContainer.children.length === 0) {
+                    addBotMessage("👋 Hi! I'm the FroZone Assistant. How can I help you today?");
+                }
+            });
+
+            closeBtn.addEventListener('click', () => {
+                chatbotWidget.style.display = 'none';
+            });
+
+            // Send message
+            sendBtn.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addUserMessage(message);
+                userInput.value = '';
+
+                // Get bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    addBotMessage(botResponse);
+                }, 300);
+            }
+
+            function addUserMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message user-message';
+                messageDiv.textContent = message;
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function addBotMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message bot-message';
+                messageDiv.textContent = message;
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function getBotResponse(userMessage) {
+                const lowerMessage = userMessage.toLowerCase();
+
+                // Check FAQ database
+                for (const [key, faq] of Object.entries(faqDatabase)) {
+                    if (faq.keywords.some(keyword => lowerMessage.includes(keyword))) {
+                        return faq.response;
+                    }
+                }
+
+                // Default response
+                return "I'm not sure about that. Please call us at (555) 123-4567 or email info@frozone.com for more information!";
+            }
+
+            // Initialize chatbot as hidden
+            chatbotWidget.style.display = 'none';
+        </script>
+
         <script>
             // Handle form submission
             document.querySelector('.contact-form').addEventListener('submit', function(e) {
