@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FroZone - Professional A/C Repair Services</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>❄️ FroZone</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Expert A/C Repair & Installation</h1>
+                <p>Fast, Reliable, and Affordable Cooling Solutions</p>
+                <a href="#contact" class="cta-button">Get a Free Quote</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>A/C Repair</h3>
+                        <p>Expert diagnosis and repair of all A/C issues. Same-day service available for emergencies.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>A/C Installation</h3>
+                        <p>Professional installation of new AC systems with warranty and support included.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🧹</div>
+                        <h3>Maintenance</h3>
+                        <p>Regular maintenance plans to keep your system running efficiently year-round.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Emergency Service</h3>
+                        <p>24/7 emergency repair service. We're here when you need us most.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Why Choose FroZone?</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>With over 15 years of experience in A/C repair and installation, FroZone is your trusted partner for all cooling needs. We pride ourselves on:</p>
+                        <ul class="benefits-list">
+                            <li>✓ Licensed and Insured Technicians</li>
+                            <li>✓ 100% Satisfaction Guarantee</li>
+                            <li>✓ Transparent Pricing</li>
+                            <li>✓ Fast Response Times</li>
+                            <li>✓ Quality Parts & Warranty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <strong>📞 Phone:</strong>
+                            <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+                        </div>
+                        <div class="info-item">
+                            <strong>📧 Email:</strong>
+                            <p><a href="mailto:info@frozone.com">info@frozone.com</a></p>
+                        </div>
+                        <div class="info-item">
+                            <strong>🕒 Hours:</strong>
+                            <p>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM<br>Sun: Emergency Only</p>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="repair">A/C Repair</option>
+                                <option value="installation">A/C Installation</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="emergency">Emergency Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 FroZone A/C Repair Services. All rights reserved.</p>
+                <p>Licensed | Insured | Professional</p>
+            </div>
+        </footer>
+
+        <script>
+            // Handle form submission
+            document.querySelector('.contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+                
+                // Create mailto link
+                const subject = `New Service Request from ${name}`;
+                const body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+                
+                window.location.href = `mailto:info@frozone.com?subject=${subject}&body=${body}`;
+                
+                // Reset form
+                this.reset();
+                alert('Thank you for your message! We will contact you soon.');
+            });
+        </script>
+    </body>
+</html>
